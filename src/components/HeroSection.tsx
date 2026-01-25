@@ -11,6 +11,15 @@ const HeroSection = () => {
     }
   };
 
+  const downloadFile = (filename: string) => {
+    const link = document.createElement('a');
+    link.href = `/${filename}`;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Gradient blobs */}
@@ -30,7 +39,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-neon-cyan text-lg font-medium mb-4"
+            className="text-neon-cyan text-lg font-lato mb-3"
           >
             Hello, I'm
           </motion.div>
@@ -39,13 +48,11 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
+            className="text-5xl md:text-7xl font-bold mb-5 leading-tight"
           >
-            <span className="neon-text">Full Stack</span>
+            <span className="neon-text">Sharvesh</span>
             <br />
-            <span className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent">
-              Developer
-            </span>
+            <span className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent whitespace-nowrap text-4xl">Full Stack Developer</span>
           </motion.h1>
 
           <motion.p
@@ -55,7 +62,7 @@ const HeroSection = () => {
             className="text-xl text-muted-foreground mb-8 max-w-2xl"
           >
             Crafting immersive digital experiences with cutting-edge technologies. 
-            Specialized in React, Node.js, and modern web development.
+            Specialized in React, Node.js, and modern web development and Mobile Application.
           </motion.p>
 
           <motion.div
@@ -74,12 +81,22 @@ const HeroSection = () => {
             </motion.button>
 
             <motion.button
+              onClick={() => downloadFile('R.Sharvesh_Resume.pdf')}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 glass-morphism rounded-lg font-semibold text-foreground border border-neon-cyan/30 hover:border-neon-cyan transition-all duration-300"
+              className="px-8 py-4 glass-morphism rounded-lg font-semibold text-foreground border border-neon-cyan/30 hover:border-neon-cyan transition-all duration-300 cursor-pointer"
             >
               Download Resume
             </motion.button>
+{/* 
+            <motion.button
+              onClick={() => downloadFile('R.Sharvesh_CoverLetter.pdf')}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 glass-morphism rounded-lg font-semibold text-foreground border border-neon-purple/30 hover:border-neon-purple transition-all duration-300 cursor-pointer"
+            >
+              Download Cover Letter
+            </motion.button> */}
           </motion.div>
         </motion.div>
 

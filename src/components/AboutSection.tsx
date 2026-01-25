@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import profileImage from '../assets/profile.jpeg';
 
 const AboutSection = () => {
   return (
@@ -32,8 +33,7 @@ const AboutSection = () => {
             </h3>
             
             <p className="text-lg text-muted-foreground leading-relaxed">
-              With over 5 years of experience in full-stack development, I specialize in creating 
-              dynamic, user-centric applications that blend innovative design with robust functionality.
+            A project-driven full-stack developer experienced in building practical applications using React, Node.js, and MongoDB
             </p>
             
             <p className="text-lg text-muted-foreground leading-relaxed">
@@ -47,16 +47,16 @@ const AboutSection = () => {
                 whileHover={{ scale: 1.05 }}
                 className="glass-morphism p-6 rounded-lg text-center"
               >
-                <div className="text-3xl font-bold text-neon-cyan mb-2">50+</div>
+                <div className="text-3xl font-bold text-neon-cyan mb-2">3+</div>
                 <div className="text-sm text-muted-foreground">Projects Completed</div>
               </motion.div>
               
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="glass-morphism p-6 rounded-lg text-center"
+                className="glass-morphism p-6 rounded-lg text-center flex items-center justify-center min-h-32"
               >
-                <div className="text-3xl font-bold text-neon-purple mb-2">5+</div>
-                <div className="text-sm text-muted-foreground">Years Experience</div>
+                <div className="text-3xl font-bold text-neon-purple">Fresher</div>
+                {/* <div className="text-sm text-muted-foreground">Years Experience</div> */}
               </motion.div>
             </div>
           </motion.div>
@@ -69,17 +69,21 @@ const AboutSection = () => {
             className="relative"
           >
             <div className="glass-morphism p-8 rounded-2xl">
-              <div className="w-48 h-48 mx-auto mb-6 rounded-full bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink p-1">
-                <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
-                  <div className="text-6xl">👨‍💻</div>
+              <div className="w-48 h-48 mx-auto mb-1 rounded-full bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink p-1">
+                <div className="w-full h-full rounded-full bg-background flex items-center justify-center overflow-hidden">
+                  <img 
+                    src={profileImage} 
+                    alt="Sharvesh" 
+                    className="w-full h-full object-contain"
+                  />
                 </div>
               </div>
               
               <div className="text-center">
-                <h4 className="text-xl font-bold mb-2">John Developer</h4>
-                <p className="text-neon-cyan mb-4">Full Stack Engineer</p>
+                <h4 className="text-xl font-bold mb-2">Sharvesh</h4>
+                <p className="text-neon-cyan mb-4">Full Stack Developer</p>
                 <p className="text-sm text-muted-foreground">
-                  "Code is poetry written in logic"
+                  "Talk is cheap,Show me your code"
                 </p>
               </div>
             </div>

@@ -26,7 +26,7 @@ const SkillsSection = () => {
       category: "Tools & Others",
       items: [
         { name: "Docker", level: 75, icon: "🐳" },
-        { name: "AWS", level: 70, icon: "☁️" },
+        { name: "WinSCP", level: 70, icon: "☁️" },
         { name: "Git", level: 95, icon: "📚" },
         { name: "Figma", level: 85, icon: "🎯" }
       ]

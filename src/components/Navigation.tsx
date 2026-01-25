@@ -35,7 +35,7 @@ const Navigation = () => {
             className="text-2xl font-bold neon-text cursor-pointer"
             onClick={() => scrollToSection('#hero')}
           >
-            {'<Dev />'}
+            {'WELCOME TO MY PORTFOLIO'}
           </motion.div>
 
           {/* Desktop Navigation */}

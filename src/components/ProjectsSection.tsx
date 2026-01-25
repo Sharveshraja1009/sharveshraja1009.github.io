@@ -8,18 +8,18 @@ const ProjectsSection = () => {
   const projects = [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      description: "Full-stack e-commerce solution with React, Node.js, and MongoDB",
-      image: "🛒",
-      tech: ["React", "Node.js", "MongoDB", "Stripe"],
+      title: "Blockchain chat Application",
+      description: "Decentralized chat app built on Ethereum with IPFS-based messaging and real-time communication.",
+      image: "🔐",
+      tech: ["Ganache", "Node.js", "MongoDB", "IPFS", "Ethereum"],
       category: "Full Stack"
     },
     {
       id: 2,
-      title: "Task Management App",
-      description: "Collaborative task management with real-time updates",
-      image: "📝",
-      tech: ["React", "Socket.io", "Express", "PostgreSQL"],
+      title: "URL Shortener",
+      description: "URL shortener app to generate and manage short links with quick redirection.",
+      image: "🔗",
+      tech: ["React", "Node.js", "Express", "MongoDB", "ShortID", "REST API"],
       category: "Frontend"
     },
     {

@@ -1,25 +1,130 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
+import { toast } from 'react-hot-toast';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: ''
+    message: '',
+    website: '' // Honeypot field
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  // Validation regex for email
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Validation function
+  const validateForm = () => {
+    const newErrors = { name: '', email: '', message: '' };
+    let isValid = true;
+
+    // Name validation
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+      isValid = false;
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = 'Name must be at least 2 characters';
+      isValid = false;
+    }
+
+    // Email validation
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+      isValid = false;
+    } else if (!emailRegex.test(formData.email.trim())) {
+      newErrors.email = 'Please enter a valid email address';
+      isValid = false;
+    }
+
+    // Message validation
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required';
+      isValid = false;
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = 'Message must be at least 10 characters';
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Honeypot check - silently return if filled
+    if (formData.website.trim()) {
+      return;
+    }
+
+    // Validate form
+    if (!validateForm()) {
+      return;
+    }
+
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
+
+    try {
+      // Check if environment variables are set
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+      console.log('EmailJS Config:', { serviceId, templateId, publicKey });
+
+      if (!serviceId || !templateId || !publicKey) {
+        console.error('Missing EmailJS credentials in .env.local');
+        toast.error('Configuration error. Check console for details.');
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Initialize EmailJS
+      emailjs.init(publicKey);
+
+      const templateParams = {
+        from_name: formData.name.trim(),
+        from_email: formData.email.trim(),
+        message: formData.message.trim()
+      };
+
+      console.log('Sending email with params:', templateParams);
+
+      // Send email using EmailJS
+      const response = await emailjs.send(serviceId, templateId, templateParams);
+      
+      console.log('EmailJS response:', response);
+
+      // Success
+      toast.success('Message sent successfully!');
+      setFormData({ name: '', email: '', message: '', website: '' });
+      setErrors({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('EmailJS Error Details:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      toast.error(`Failed: ${errorMessage}`);
+    } finally {
       setIsSubmitting(false);
-      setFormData({ name: '', email: '', message: '' });
-      alert('Message sent successfully!');
-    }, 2000);
+    }
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    // Clear error when user starts typing
+    if (errors[name as keyof typeof errors]) {
+      setErrors({ ...errors, [name]: '' });
+    }
   };
 
   const socialLinks = [
@@ -65,15 +170,15 @@ const ContactSection = () => {
             <div className="space-y-4">
               <div className="flex items-center gap-4">
                 <span className="text-2xl">📧</span>
-                <span>john@developer.com</span>
+                <span>sharveshraja1009@gmail.com</span>
               </div>
               <div className="flex items-center gap-4">
                 <span className="text-2xl">📱</span>
-                <span>+1 (555) 123-4567</span>
+                <span>+91 7094422941</span>
               </div>
               <div className="flex items-center gap-4">
                 <span className="text-2xl">📍</span>
-                <span>San Francisco, CA</span>
+                <span>Puducherry, India</span>
               </div>
             </div>
 
@@ -100,6 +205,18 @@ const ContactSection = () => {
             onSubmit={handleSubmit}
             className="glass-morphism p-8 rounded-2xl space-y-6"
           >
+            {/* Honeypot field - visually hidden */}
+            <input
+              type="text"
+              name="website"
+              value={formData.website}
+              onChange={handleChange}
+              style={{ display: 'none' }}
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+            />
+
             <div>
               <label htmlFor="name" className="block text-sm font-medium mb-2">
                 Name
@@ -107,11 +224,14 @@ const ContactSection = () => {
               <input
                 type="text"
                 id="name"
+                name="name"
                 value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-4 py-3 bg-secondary/30 border border-secondary rounded-lg focus:border-neon-cyan focus:outline-none transition-colors"
-                required
+                onChange={handleChange}
+                className={`w-full px-4 py-3 bg-secondary/30 border rounded-lg focus:outline-none transition-colors ${
+                  errors.name ? 'border-red-500 focus:border-red-500' : 'border-secondary focus:border-neon-cyan'
+                }`}
               />
+              {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
             </div>
 
             <div>
@@ -121,11 +241,14 @@ const ContactSection = () => {
               <input
                 type="email"
                 id="email"
+                name="email"
                 value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-3 bg-secondary/30 border border-secondary rounded-lg focus:border-neon-cyan focus:outline-none transition-colors"
-                required
+                onChange={handleChange}
+                className={`w-full px-4 py-3 bg-secondary/30 border rounded-lg focus:outline-none transition-colors ${
+                  errors.email ? 'border-red-500 focus:border-red-500' : 'border-secondary focus:border-neon-cyan'
+                }`}
               />
+              {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
             </div>
 
             <div>
@@ -134,22 +257,40 @@ const ContactSection = () => {
               </label>
               <textarea
                 id="message"
+                name="message"
                 rows={5}
                 value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-4 py-3 bg-secondary/30 border border-secondary rounded-lg focus:border-neon-cyan focus:outline-none transition-colors resize-none"
-                required
+                onChange={handleChange}
+                className={`w-full px-4 py-3 bg-secondary/30 border rounded-lg focus:outline-none transition-colors resize-none ${
+                  errors.message ? 'border-red-500 focus:border-red-500' : 'border-secondary focus:border-neon-cyan'
+                }`}
               />
+              {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
             </div>
 
             <motion.button
               type="submit"
-              disabled={isSubmitting}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="w-full px-6 py-3 bg-gradient-to-r from-neon-cyan to-neon-purple text-black font-semibold rounded-lg disabled:opacity-50 transition-all"
+              disabled={isSubmitting || !!errors.name || !!errors.email || !!errors.message}
+              whileHover={!isSubmitting ? { scale: 1.05 } : {}}
+              whileTap={!isSubmitting ? { scale: 0.95 } : {}}
+              className={`w-full px-6 py-3 bg-gradient-to-r from-neon-cyan to-neon-purple text-black font-semibold rounded-lg transition-all flex items-center justify-center gap-2 ${
+                isSubmitting || !!errors.name || !!errors.email || !!errors.message
+                  ? 'opacity-50 cursor-not-allowed'
+                  : 'hover:opacity-90'
+              }`}
             >
-              {isSubmitting ? 'Sending...' : 'Send Message'}
+              {isSubmitting ? (
+                <>
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                    className="w-4 h-4 border-2 border-black border-t-transparent rounded-full"
+                  />
+                  Sending...
+                </>
+              ) : (
+                'Send Message'
+              )}
             </motion.button>
           </motion.form>
         </div>
