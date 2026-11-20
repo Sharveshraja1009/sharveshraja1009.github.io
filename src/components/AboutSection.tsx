@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import profileImage from '../assets/profile.jpeg';
+import ProfileCard from './ProfileCard';
 
 const AboutSection = () => {
   return (
@@ -73,27 +73,10 @@ const AboutSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="relative"
+            className="relative hidden lg:block"
           >
-            <div className="glass-morphism p-8 rounded-2xl">
-              <div className="w-48 h-48 mx-auto mb-1 rounded-full bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink p-1">
-                <div className="w-full h-full rounded-full bg-background flex items-center justify-center overflow-hidden">
-                  <img 
-                    src={profileImage} 
-                    alt="Sharvesh" 
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-              </div>
-              
-              <div className="text-center">
-                <h4 className="text-xl font-bold mb-2">Sharvesh R.</h4>
-                <p className="text-neon-cyan mb-4">Full-Stack Developer · Legends Tech Solution</p>
-                <p className="text-sm text-muted-foreground">
-                  "Talk is cheap,Show me your code"
-                </p>
-              </div>
-            </div>
+            {/* On phones this card is shown in the hero instead */}
+            <ProfileCard />
           </motion.div>
         </div>
       </div>

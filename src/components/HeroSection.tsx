@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import FloatingIcon from './FloatingIcon';
+import ProfileCard from './ProfileCard';
 
 const HeroSection = () => {
   const scrollToProjects = () => {
@@ -101,13 +102,18 @@ const HeroSection = () => {
           </motion.div>
         </motion.div>
 
-        {/* 3D Icons */}
+        {/* Desktop: 3D icons. Phones: photo card */}
         <motion.div
           initial={{ opacity: 0, x: 60 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
         >
-          <FloatingIcon />
+          <div className="hidden lg:block">
+            <FloatingIcon />
+          </div>
+          <div className="lg:hidden max-w-sm mx-auto">
+            <ProfileCard />
+          </div>
         </motion.div>
       </div>
     </section>
