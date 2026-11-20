@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# design tooling + original downloads (credits kept in assets/credits.json)
+.taste-skill/
+assets/*.jpg

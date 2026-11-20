@@ -1,73 +1,53 @@
-# Welcome to your Lovable project
+# Sharvesh R. — Portfolio
 
-## Project info
+Personal portfolio of Sharvesh R., full-stack developer in Puducherry. One page: live products, every project with a technology filter, work history and contact.
 
-**URL**: https://lovable.dev/projects/2ea9873c-0647-458d-8bf3-ae041e41944a
+**Live:** https://sharveshraja1009.github.io *(after the GitHub Pages setup below)*
 
-## How can I edit this code?
+## Stack
 
-There are several ways of editing your application.
+| Layer | Technology |
+|---|---|
+| UI | React 18, TypeScript, Vite 5 |
+| Styling | Plain CSS with design tokens (`src/styles/portfolio.css`), dark and light themes |
+| Contact form | EmailJS (optional, enabled when its three env vars are set) |
+| Hosting | GitHub Pages via GitHub Actions (`.github/workflows/deploy.yml`) |
 
-**Use Lovable**
+## Editing content
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/2ea9873c-0647-458d-8bf3-ae041e41944a) and start prompting.
+All text, projects, links and experience live in **one file**: [`src/data/profile.ts`](src/data/profile.ts).
+Components in `src/components/pf/` only render that data.
 
-Changes made via Lovable will be committed automatically to this repo.
+- Add a live product → append to `work` and put a 900×900 screenshot in `public/work/`.
+- Add any project → append to `projects`; its `stack` values feed the technology filter.
+- Set `linkedin` to your profile URL; the LinkedIn links stay hidden while it is empty.
 
-**Use your preferred IDE**
+## Run locally
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```bash
+npm install
+npm run dev        # http://localhost:8080
+npm run build      # production build in dist/
+npm run preview    # serve the build
 ```
 
-**Edit a file directly in GitHub**
+## Environment
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Copy the names below into `.env.local` (git-ignored). The site works without them; the contact form is hidden.
 
-**Use GitHub Codespaces**
+| Variable | Purpose |
+|---|---|
+| `VITE_EMAILJS_SERVICE_ID` | EmailJS service |
+| `VITE_EMAILJS_TEMPLATE_ID` | EmailJS template |
+| `VITE_EMAILJS_PUBLIC_KEY` | EmailJS public key |
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Deploy to GitHub Pages
 
-## What technologies are used for this project?
+1. Repo **Settings → Pages → Source: GitHub Actions**.
+2. Add the three EmailJS values as **Actions secrets** (optional).
+3. Push to `main`. The workflow picks the base path automatically:
+   a repo named `sharveshraja1009.github.io` is served at the root; any other repo at `/<repo-name>/`.
 
-This project is built with:
+## Credits
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/2ea9873c-0647-458d-8bf3-ae041e41944a) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Photographs: “Pondicherry – French Quarter” by Rainer Halama (CC BY-SA 4.0) and “Beach Promenade, Pondicherry, India” by Dey.sandip (CC BY 3.0), via Wikimedia Commons. Product screenshots are captures of the public sites.

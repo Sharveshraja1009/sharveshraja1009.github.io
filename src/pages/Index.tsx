@@ -1,35 +1,30 @@
-
-import React from 'react';
-import Navigation from '@/components/Navigation';
-import ParticlesBackground from '@/components/ParticlesBackground';
-import HeroSection from '@/components/HeroSection';
-import AboutSection from '@/components/AboutSection';
-import ProjectsSection from '@/components/ProjectsSection';
-import SkillsSection from '@/components/SkillsSection';
-import ContactSection from '@/components/ContactSection';
+import { useEffect } from 'react';
+import Hero from '@/components/pf/Hero';
+import Work from '@/components/pf/Work';
+import AllProjects from '@/components/pf/AllProjects';
+import Experience from '@/components/pf/Experience';
+import Contact from '@/components/pf/Contact';
+import Footer from '@/components/pf/Footer';
+import { useReveal } from '@/components/pf/useReveal';
 
 const Index = () => {
-  console.log('Index component rendering');
+  useReveal();
+  useEffect(() => {
+    document.body.classList.add('pf');
+  }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      <ParticlesBackground />
-      <Navigation />
-      
+    <>
+      <a className="skip" href="#work">Skip to work</a>
       <main>
-        <HeroSection />
-        <AboutSection />
-        <ProjectsSection />
-        <SkillsSection />
-        <ContactSection />
+        <Hero />
+        <Work />
+        <AllProjects />
+        <Experience />
+        <Contact />
       </main>
-      
-      <footer className="py-8 text-center text-muted-foreground border-t border-secondary/30">
-        <div className="max-w-7xl mx-auto px-4">
-          <p>&copy; 2024 Sharvesh Portfolio. All rights reserved.</p>
-        </div>
-      </footer>
-    </div>
+      <Footer />
+    </>
   );
 };
 
