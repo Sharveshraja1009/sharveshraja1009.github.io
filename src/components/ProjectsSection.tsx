@@ -9,7 +9,7 @@ type Project = {
   image: string;          // emoji shown when there is no screenshot
   screenshot?: string;    // file in public/work/
   tech: string[];
-  category: 'Legends Tech' | 'Freelance' | 'Personal' | 'College';
+  category: 'Legends Tech Solution' | 'Freelance' | 'Personal' | 'College';
   live?: string;
   code?: string;
 };
@@ -24,7 +24,7 @@ const projects: Project[] = [
     image: '💼',
     screenshot: 'work/pondyjob.webp',
     tech: ['PHP', 'MySQL', 'React', 'React Native', 'PayU', 'Firebase'],
-    category: 'Legends Tech',
+    category: 'Legends Tech Solution',
     live: 'https://pondyjob.com/',
   },
   {
@@ -36,7 +36,7 @@ const projects: Project[] = [
     image: '💍',
     screenshot: 'work/pondicherrymatrimony.webp',
     tech: ['PHP', 'MySQL', 'Flutter', 'OpenAI API', 'PayU'],
-    category: 'Legends Tech',
+    category: 'Legends Tech Solution',
     live: 'https://www.pondicherrymatrimony.com/',
   },
   {
@@ -48,7 +48,7 @@ const projects: Project[] = [
     image: '🏠',
     screenshot: 'work/rentpondy.webp',
     tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Flutter'],
-    category: 'Legends Tech',
+    category: 'Legends Tech Solution',
     live: 'https://rentpondy.com/',
   },
   {
@@ -59,7 +59,7 @@ const projects: Project[] = [
     image: '🏢',
     screenshot: 'work/pondyproperty.webp',
     tech: ['React', 'Node.js', 'MongoDB', 'Flutter'],
-    category: 'Legends Tech',
+    category: 'Legends Tech Solution',
     live: 'https://pondyproperty.com/',
   },
   {
@@ -151,7 +151,7 @@ const projects: Project[] = [
   },
 ];
 
-const filters = ['All', 'Legends Tech', 'Freelance', 'Personal', 'College'] as const;
+const filters = ['All', 'Legends Tech Solution', 'Freelance', 'Personal', 'College'] as const;
 
 const asset = (p: string) => `${import.meta.env.BASE_URL}${p}`;
 
