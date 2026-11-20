@@ -15,7 +15,7 @@ export const profile = {
   city: 'Puducherry, India',
   email: 'sharveshraja1009@gmail.com',
   github: 'https://github.com/Sharveshraja1009',
-  linkedin: '', // TODO: paste your LinkedIn profile URL; the link stays hidden while this is empty
+  linkedin: 'https://www.linkedin.com/in/sharveshraja1009',
   resume: 'R.Sharvesh_Resume.pdf', // TODO: replace with an updated resume that lists Legends Tech Solution
   intro:
     'Full-stack developer in Puducherry. I work on the web and mobile apps behind Rent Pondy, Pondicherry Matrimony and Pondy Job.',
@@ -32,15 +32,15 @@ export type Experience = {
 export const experience: Experience[] = [
   {
     org: 'Legends Tech Solution',
-    role: 'Developer', // TODO: confirm your exact job title
-    when: 'Now', // TODO: add start month and year, e.g. "Jul 2025 – now"
+    role: 'Full-stack developer',
+    when: 'Jul 2025 – now',
     summary:
-      'Product work across four local platforms, each with a user app, an admin panel and an Android app.',
+      'Four local platforms, each with a user app, an admin panel and an Android app. Over 650 commits under my name since April 2026.',
     items: [
-      'Rent Pondy — rental listings: React web app, React admin panel, Node.js/Express/MongoDB API and a Flutter app.',
-      'Pondy Property — property buying and selling on the same React, Node.js and MongoDB architecture, with a Flutter Android app.',
-      'Pondicherry Matrimony — PHP (Yii) and MySQL member site and admin, a Flutter app, and an Express + TypeScript + Prisma rebuild with three React apps.',
-      'Pondy Job — job portal: PHP REST API on MySQL, React public site and admin, Expo React Native app.',
+      'Pondy Job — built the job portal from its first commit: PHP REST API on MySQL, React site and admin, Expo React Native app, Firebase OTP login, a PayU points system and GitHub Actions deploys.',
+      'Pondicherry Matrimony — 400+ commits on the staff admin (PHP/Yii, MySQL): office billing and business reports, PayU reconciliation, lead pop-ups for staff, a WhatsApp assistant and YouTube/Google Ads tools; plus the Flutter app (OTP login, push notifications, Wedding Market).',
+      'Rent Pondy — area and pincode search, nightly auto-expire, follow-up tracking and a Tesseract OCR importer for newspaper ads, across React, Node.js/MongoDB and Flutter.',
+      'Pondy Property — SEO for listings, auto-expire, buyer follow-ups and the move to the pondyproperty.com domain.',
     ],
   },
   {
