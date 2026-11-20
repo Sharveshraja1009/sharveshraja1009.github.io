@@ -31,7 +31,7 @@ const SkillsSection = () => {
       category: "Integrations & Tools",
       items: [
         { name: "PayU payments", where: "Pondy Job, Matrimony", icon: "💳" },
-        { name: "Firebase OTP & push", where: "Pondy Job, Matrimony app", icon: "🔥" },
+        { name: "Firebase OTP & push notifications", where: "Pondy Job, Matrimony app", icon: "🔥" },
         { name: "OpenAI API", where: "Matrimony WhatsApp assistant", icon: "🤖" },
         { name: "GitHub Actions", where: "Pondy Job, Thirumalai, this site", icon: "⚙️" },
         { name: "Git & GitHub", where: "Every project", icon: "📚" },
