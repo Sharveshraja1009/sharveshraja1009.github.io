@@ -16,7 +16,7 @@ export const profile = {
   email: 'sharveshraja1009@gmail.com',
   github: 'https://github.com/Sharveshraja1009',
   linkedin: 'https://www.linkedin.com/in/sharveshraja1009',
-  resume: 'R.Sharvesh_Resume.pdf', // TODO: replace with an updated resume that lists Legends Tech Solution
+  resume: 'R_Sharvesh_Full_Stack_Developer_Resume.pdf',
   intro:
     'Full-stack developer in Puducherry. I work on the web and mobile apps behind Rent Pondy, Pondicherry Matrimony and Pondy Job.',
 };
@@ -55,7 +55,7 @@ export const experience: Experience[] = [
   },
   {
     org: 'Sri Venkateshwaraa College of Engineering and Technology',
-    role: 'B.Tech, Computer Science Engineering · CGPA 8.54',
+    role: 'B.Tech, Computer Science Engineering · CGPA 9.0',
     when: '2021 – 2025',
     summary:
       'Final-year project: a blockchain chat application. Paper presented at the DST-SERB International Conference, Aug 2024.',
