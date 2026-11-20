@@ -33,7 +33,7 @@ const Navigation = () => {
         <div className="flex justify-between items-center py-4">
           <motion.div 
             whileHover={{ scale: 1.1 }}
-            className="text-2xl font-bold neon-text cursor-pointer"
+            className="text-base sm:text-xl lg:text-2xl font-bold neon-text cursor-pointer whitespace-nowrap"
             onClick={() => scrollToSection('#hero')}
           >
             {'WELCOME TO MY PORTFOLIO'}

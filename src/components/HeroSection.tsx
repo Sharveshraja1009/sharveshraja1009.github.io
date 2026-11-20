@@ -21,7 +21,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 pb-12 lg:pt-0 lg:pb-0">
       {/* Gradient blobs */}
       <div className="absolute top-20 left-20 w-72 h-72 bg-neon-cyan opacity-20 rounded-full filter blur-3xl animate-float" />
       <div className="absolute bottom-20 right-20 w-96 h-96 bg-neon-purple opacity-20 rounded-full filter blur-3xl animate-float" style={{ animationDelay: '2s' }} />
@@ -52,7 +52,7 @@ const HeroSection = () => {
           >
             <span className="neon-text">Sharvesh</span>
             <br />
-            <span className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent whitespace-nowrap text-4xl">Full Stack Developer</span>
+            <span className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent whitespace-nowrap text-3xl sm:text-4xl">Full Stack Developer</span>
           </motion.h1>
 
           <motion.p
