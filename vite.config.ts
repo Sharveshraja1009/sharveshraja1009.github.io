@@ -4,8 +4,8 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
-// BASE_PATH: "/" for a <user>.github.io repo, "/<repo>/" for a project repo.
 export default defineConfig(({ mode }) => ({
+  // GitHub Pages: "/" for <user>.github.io, "/<repo>/" otherwise (set by the deploy workflow)
   base: process.env.BASE_PATH ?? "/",
   server: {
     host: "::",

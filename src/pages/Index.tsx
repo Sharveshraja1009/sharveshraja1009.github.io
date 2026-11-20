@@ -1,30 +1,36 @@
-import { useEffect } from 'react';
-import Hero from '@/components/pf/Hero';
-import Work from '@/components/pf/Work';
-import AllProjects from '@/components/pf/AllProjects';
-import Experience from '@/components/pf/Experience';
-import Contact from '@/components/pf/Contact';
-import Footer from '@/components/pf/Footer';
-import { useReveal } from '@/components/pf/useReveal';
+
+import React from 'react';
+import Navigation from '@/components/Navigation';
+import ParticlesBackground from '@/components/ParticlesBackground';
+import HeroSection from '@/components/HeroSection';
+import AboutSection from '@/components/AboutSection';
+import ProjectsSection from '@/components/ProjectsSection';
+import SkillsSection from '@/components/SkillsSection';
+import ExperienceSection from '@/components/ExperienceSection';
+import ContactSection from '@/components/ContactSection';
 
 const Index = () => {
-  useReveal();
-  useEffect(() => {
-    document.body.classList.add('pf');
-  }, []);
 
   return (
-    <>
-      <a className="skip" href="#work">Skip to work</a>
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <ParticlesBackground />
+      <Navigation />
+      
       <main>
-        <Hero />
-        <Work />
-        <AllProjects />
-        <Experience />
-        <Contact />
+        <HeroSection />
+        <AboutSection />
+        <ExperienceSection />
+        <ProjectsSection />
+        <SkillsSection />
+        <ContactSection />
       </main>
-      <Footer />
-    </>
+      
+      <footer className="py-8 text-center text-muted-foreground border-t border-secondary/30">
+        <div className="max-w-7xl mx-auto px-4">
+          <p>&copy; 2026 Sharvesh R. · Full-Stack Developer, Puducherry</p>
+        </div>
+      </footer>
+    </div>
   );
 };
 
